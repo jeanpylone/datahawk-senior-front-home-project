@@ -12,7 +12,8 @@ export const CHART_OPTIONS: ChartOptions = {
                     unit: 'day'
                 },
                 ticks: {
-                    maxTicksLimit: 10
+                    maxTicksLimit: 10,
+                    fontColor: "rgba(255,255,255,0.8)"
                 }
             }
         ],
@@ -20,7 +21,8 @@ export const CHART_OPTIONS: ChartOptions = {
             {
                 ticks: {
                     reverse: true,
-                    min: 1
+                    min: 1,
+                    fontColor: "rgba(255,255,255,0.8)"
                 },
                 gridLines: {
                     display: true,
