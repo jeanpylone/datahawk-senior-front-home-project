@@ -6,6 +6,8 @@ Chart.plugins.register({
         const lastDataIndex = (chartInstance as any).scales["x-axis-0"].ticks.length;
 
         if(dataset) {
+            dataset.pointBorderWidth = 1;
+            dataset.borderWidth = 2;
             const lastData = dataset?.data?.[lastDataIndex];
             if (lastData) {
                 const value = lastData as number;
@@ -16,13 +18,14 @@ Chart.plugins.register({
                   255 - Math.round(value * 2)
                 },${
                   Math.round(value)
-                },0.7)`;
+                },${value % 10 === 1 ? 1 : 0.7})`;
+                if (value % 10 === 1) {
+                    dataset.borderWidth = 6;
+                }
             } else {
                 dataset.pointBackgroundColor =
                 dataset.borderColor = `rgba(255,255,255,0.5)`;
             }
-            dataset.pointBorderWidth = 1;
-            dataset.borderWidth = 2;
         }
     }
 });
@@ -31,6 +34,9 @@ export const CHART_OPTIONS: ChartOptions = {
     defaultColor: 'black',
     responsive: true,
     maintainAspectRatio: false,
+    layout: {
+        padding:24
+    },
     animation:{duration:0},
     scales: {
         xAxes: [
