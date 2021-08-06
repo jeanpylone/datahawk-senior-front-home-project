@@ -7,6 +7,7 @@ import { ProductRank } from '../../models/product-rank.type';
 import { ChartOptions } from 'chart.js';
 import { DatasetId } from '../../models/dataset-id.enum';
 import { AppActions } from '../../state/app.actions';
+import { DateRange } from "../../models/daterange.type";
 
 @Component({
   selector: 'dh-rank-viewer',
@@ -20,6 +21,9 @@ export class RankViewerComponent implements OnInit {
   // @ts-ignore
   @Select(AppState.selectedDatasetId) selectedDatasetId$: Observable<DatasetId>;
 
+  // @ts-ignore
+  @Select(AppState.selectedDateRange) selectedDateRange$: Observable<DateRange>;
+
   chartsOptions: ChartOptions = CHART_OPTIONS;
   datasetIds: DatasetId[] = Object.values(DatasetId);
 
@@ -30,6 +34,9 @@ export class RankViewerComponent implements OnInit {
 
   onDatasetSelection(datasetId: DatasetId) {
     this.store.dispatch(new AppActions.SelectDataset(datasetId));
+  }
+  onDateRangeSelection(dateRange: DateRange) {
+    this.store.dispatch(new AppActions.SelectDateRange(dateRange));
   }
 
 }
