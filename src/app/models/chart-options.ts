@@ -8,9 +8,12 @@ Chart.plugins.register({
         if(dataset) {
             dataset.pointBorderWidth = 1;
             dataset.borderWidth = 2;
+            dataset.hoverBorderWidth = 8;
             const lastData = dataset?.data?.[lastDataIndex];
             if (lastData) {
                 const value = lastData as number;
+                dataset.hoverBackgroundColor =
+                dataset.hoverBorderColor =
                 dataset.pointBackgroundColor =
                 dataset.borderColor = `rgba(${
                     Math.round(value * Math.log(255))
@@ -23,6 +26,8 @@ Chart.plugins.register({
                     dataset.borderWidth = 6;
                 }
             } else {
+                dataset.hoverBackgroundColor =
+                dataset.hoverBorderColor =
                 dataset.pointBackgroundColor =
                 dataset.borderColor = `rgba(255,255,255,0.5)`;
             }
@@ -34,6 +39,9 @@ export const CHART_OPTIONS: ChartOptions = {
     defaultColor: 'black',
     responsive: true,
     maintainAspectRatio: false,
+    hover: {
+        mode: "dataset"
+    },
     layout: {
         padding:24
     },
