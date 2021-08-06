@@ -4,6 +4,7 @@ export const CHART_OPTIONS: ChartOptions = {
     defaultColor: 'black',
     responsive: true,
     maintainAspectRatio: false,
+    animation:{duration:0},
     scales: {
         xAxes: [
             {
